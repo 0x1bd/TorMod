@@ -46,7 +46,7 @@ object TorRunner {
     }
 
     private fun startTorProcess(executable: java.io.File) {
-        val torProcessBuilder = ProcessBuilder(executable.toString())
+        val torProcessBuilder = ProcessBuilder(executable.toString(), "--SocksPort", TorMod.config.port.toString())
             .inheritIO()
 
         // Set LD_LIBRARY_PATH for Linux
