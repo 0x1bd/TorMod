@@ -3,6 +3,8 @@
   "text.autoconfig.tormod.option.enabled.@Tooltip": "Should all traffic be routed over the TOR network",
   "text.autoconfig.tormod.option.port": "Tor Port",
   "text.autoconfig.tormod.option.port.@Tooltip": "Which port the TOR program runs on",
+  "text.autoconfig.tormod.option.torVersion": "Tor Version",
+  "text.autoconfig.tormod.option.torVersion.@Tooltip": "What version of Tor should be used",
 
   "text.tormod.title": "TorMod"
 }
