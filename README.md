@@ -21,7 +21,7 @@ TorMod is a Minecraft Fabric mod that allows you to play Minecraft while routing
     - Ensure you have [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin) installed.
 
 2. **Download TorMod**:
-    - Download the latest release of TorMod from the [releases page](https://github.com/meo209/TorMod/releases).
+    - Download the latest release of TorMod from the [releases page](https://github.com/meo209/TorMod/releases) or [modrinth]().
 
 3. **Install the Mod**:
     - Place the downloaded `.jar` file into your Minecraft `mods` folder.
