@@ -46,22 +46,22 @@ object TorInstaller {
 
     fun install() {
         if (isInstalled()) {
-            TorMod.logger.info("TOR is already installed.")
+            TorMod.logger.info("Tor is already installed.")
             return
         }
 
         TOR_DIR.mkdirs()
 
         val torUrl =
-            URI("https://archive.torproject.org/tor-package-archive/torbrowser/${TorMod.config.torVersion}/tor-expert-bundle-${PlatformUtils.platform.name.lowercase()}-${PlatformUtils.architecture.name.lowercase()}-${TorMod.config.torVersion}.tar.gz").toURL()
+            URI("https://archive.torproject.org/tor-package-archive/torbrowser/${TorMod.config.torVersion}/tor-expert-bundle-${PlatformUtils.platformString}-${PlatformUtils.architectureString}-${TorMod.config.torVersion}.tar.gz").toURL()
         val tarGzFile = TOR_DIR.resolve("tor-${TorMod.config.torVersion}.tar.gz").toPath()
 
-        TorMod.logger.info("Downloading TOR from ${torUrl}...")
+        TorMod.logger.info("Downloading Tor from ${torUrl}...")
         download(torUrl, tarGzFile)
 
-        TorMod.logger.info("Extracting TOR...")
+        TorMod.logger.info("Extracting Tor...")
         extractTarGz(tarGzFile.toFile(), TOR_DIR)
 
-        TorMod.logger.info("TOR installation complete.")
+        TorMod.logger.info("Tor installation complete.")
     }
 }

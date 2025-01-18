@@ -39,7 +39,7 @@ class TorMod : ClientModInitializer {
         if (!TorInstaller.isInstalled())
             TorInstaller.install()
         else
-            logger.info("TOR is already installed.")
+            logger.info("Tor is already installed.")
 
         TorRunner.startTor()
     }

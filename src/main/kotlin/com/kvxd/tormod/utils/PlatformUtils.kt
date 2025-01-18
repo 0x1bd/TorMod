@@ -23,6 +23,8 @@ object PlatformUtils {
             }
         }
 
+    val platformString = platform.name.lowercase()
+
     val architecture: Architecture
         get() = System.getProperty("os.arch").uppercase().let { arch ->
             when {
@@ -31,5 +33,7 @@ object PlatformUtils {
                 else -> throw UnsupportedOperationException("Unsupported architecture: $arch")
             }
         }
+
+    val architectureString = architecture.name.lowercase()
 
 }

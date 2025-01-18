@@ -51,6 +51,7 @@ object TorRunner {
             .inheritIO()
 
         // Set LD_LIBRARY_PATH for Linux
+        // Required because otherwise tor does not use the correct libraries
         if (PlatformUtils.platform == PlatformUtils.Platform.LINUX) {
             val torDir = executable.parentFile.absolutePath
             val env = torProcessBuilder.environment()
