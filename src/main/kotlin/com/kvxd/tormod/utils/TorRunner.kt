@@ -1,6 +1,7 @@
 package com.kvxd.tormod.utils
 
 import com.kvxd.tormod.TorMod
+import java.io.File
 import java.io.IOException
 
 object TorRunner {
@@ -36,7 +37,7 @@ object TorRunner {
         }
     }
 
-    private fun makeExecutable(executable: java.io.File) {
+    private fun makeExecutable(executable: File) {
         if (PlatformUtils.platform == PlatformUtils.Platform.LINUX || PlatformUtils.platform == PlatformUtils.Platform.MACOS) {
             val process = ProcessBuilder("chmod", "+x", executable.toString())
                 .inheritIO()
@@ -45,7 +46,7 @@ object TorRunner {
         }
     }
 
-    private fun startTorProcess(executable: java.io.File) {
+    private fun startTorProcess(executable: File) {
         val torProcessBuilder = ProcessBuilder(executable.toString(), "--SocksPort", TorMod.config.port.toString())
             .inheritIO()
 
