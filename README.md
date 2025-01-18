@@ -1,4 +1,4 @@
-# TorMod - Minecraft Fabric Mod for Enhanced Privacy
+# TorMod
 
 TorMod is a Minecraft Fabric mod that allows you to play Minecraft while routing your traffic through the [Tor network](https://www.torproject.org/). This mod automatically installs and runs Tor in the background, providing enhanced privacy and anonymity while playing Minecraft. However, please note that using Tor with Minecraft is easily detectable and **may result in bans on certain servers**. Use this mod at your own risk.
 
