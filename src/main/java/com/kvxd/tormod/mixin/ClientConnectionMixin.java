@@ -22,7 +22,7 @@ public class ClientConnectionMixin {
         if (!TorMod.config.getEnabled()) return;
         if (side != NetworkSide.CLIENTBOUND) return;
 
-        pipeline.addFirst(new Socks5ProxyHandler(new InetSocketAddress(TorMod.config.getPort())));
+        pipeline.addFirst(new Socks5ProxyHandler(new InetSocketAddress("localhost", TorMod.config.getPort())));
     }
 
 }
