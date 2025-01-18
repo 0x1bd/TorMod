@@ -1,0 +1,12 @@
+{
+  "text.autoconfig.tormod.option.enabled": "Aktiviert",
+  "text.autoconfig.tormod.option.enabled.@Tooltip": "Soll der gesamte Datenverkehr über das TOR-Netzwerk geleitet werden?",
+  "text.autoconfig.tormod.option.port": "Tor-Port",
+  "text.autoconfig.tormod.option.port.@Tooltip": "Welcher Port soll für das TOR-Programm verwendet werden?",
+  "text.autoconfig.tormod.option.torVersion": "Tor-Version",
+  "text.autoconfig.tormod.option.torVersion.@Tooltip": "Welche Version von TOR soll verwendet werden?",
+
+  "text.autoconfig.tormod.title": "Tormod",
+
+  "text.tormod.title": "TorMod"
+}
