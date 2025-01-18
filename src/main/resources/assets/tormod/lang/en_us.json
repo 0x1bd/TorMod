@@ -6,5 +6,7 @@
   "text.autoconfig.tormod.option.torVersion": "Tor Version",
   "text.autoconfig.tormod.option.torVersion.@Tooltip": "What version of Tor should be used",
 
+  "text.autoconfig.tormod.title": "Tormod",
+
   "text.tormod.title": "TorMod"
 }
