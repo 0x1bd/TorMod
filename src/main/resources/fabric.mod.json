@@ -5,11 +5,11 @@
 
   "name": "TorMod",
   "description": "Use the TOR network to connect to any minecraft server.",
-  "authors": ["meo209"],
+  "authors": ["kvxd"],
   "contact": {
-    "homepage": "https://github.com/meo209/TorMod",
-    "issues": "https://github.com/meo209/TorMod/issues",
-    "sources": "https://github.com/meo209/TorMod"
+    "homepage": "https://github.com/kvxd/TorMod",
+    "issues": "https://github.com/kvxd/TorMod/issues",
+    "sources": "https://github.com/kvxd/TorMod"
   },
 
   "license": "GPL-3.0",
