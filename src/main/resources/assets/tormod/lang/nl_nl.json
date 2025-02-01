@@ -1,0 +1,12 @@
+{
+  "text.autoconfig.tormod.option.enabled": "Aan",
+  "text.autoconfig.tormod.option.enabled.@Tooltip": "Sal alle verkeer door TOR Verzend worden",
+  "text.autoconfig.tormod.option.port": "TOR Port",
+  "text.autoconfig.tormod.option.port.@Tooltip": "Welke port sal TOR gebruiken",
+  "text.autoconfig.tormod.option.torVersion": "Tor versie",
+  "text.autoconfig.tormod.option.torVersion.@Tooltip": "Welke versie van tor wil je gebruiken",
+
+  "text.autoconfig.tormod.title": "Tormod",
+
+  "text.tormod.title": "TorMod"
+}
