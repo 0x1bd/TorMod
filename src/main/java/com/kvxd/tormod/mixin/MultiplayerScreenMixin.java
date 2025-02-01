@@ -1,6 +1,8 @@
 package com.kvxd.tormod.mixin;
 
 import com.kvxd.tormod.TorMod;
+import com.kvxd.tormod.utils.TorRunner;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -22,17 +24,27 @@ public class MultiplayerScreenMixin extends Screen {
     private void init(CallbackInfo ci) {
         int textColor = TorMod.config.getEnabled() ? Colors.GREEN : Colors.RED;
 
-        ButtonWidget button = ButtonWidget.builder(Text.translatable("text.tormod.title"), btn -> {
+        ButtonWidget enabledButton = ButtonWidget.builder(Text.translatable("text.tormod.title"), btn -> {
                     TorMod.config.setEnabled(!TorMod.config.getEnabled());
+                    if (TorMod.config.getEnabled())
+                        TorRunner.INSTANCE.startTor();
+                    else
+                        TorRunner.INSTANCE.stopTor();
+
                     btn.setMessage(Text.translatable("text.tormod.title").styled(style -> style.withColor(TorMod.config.getEnabled() ? Colors.GREEN : Colors.RED)));
                 })
                 .position(5, 5)
                 .width(60)
                 .build();
 
-        button.setMessage(Text.translatable("text.tormod.title").styled(style -> style.withColor(textColor)));
+        enabledButton.setMessage(Text.translatable("text.tormod.title").styled(style -> style.withColor(textColor)));
 
-        addDrawableChild(button);
+        addDrawableChild(enabledButton);
+    }
+
+    @Inject(method = "render", at = @At("TAIL"))
+    private void render(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
+        context.drawText(client.textRenderer, "Status: " + TorRunner.INSTANCE.getStatus(), 5 + 60 + 5, 5, -1, true);
     }
 
 }

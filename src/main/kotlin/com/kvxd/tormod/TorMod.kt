@@ -34,19 +34,19 @@ class TorMod : ClientModInitializer {
 
         config = holder.config
 
-        if (!config.enabled) return
-
         if (!TorInstaller.isInstalled())
             TorInstaller.install()
         else
             logger.info("Tor is already installed.")
 
-        TorRunner.startTor()
+        if (config.enabled)
+            TorRunner.startTor()
     }
 
     private fun onClientStopping(client: MinecraftClient) {
         holder.save()
         TorRunner.stopTor()
+        TorRunner.shutdown()
     }
 
 }
