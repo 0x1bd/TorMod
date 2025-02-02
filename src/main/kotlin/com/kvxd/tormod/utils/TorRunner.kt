@@ -18,7 +18,7 @@ object TorRunner {
     private val executor = Executors.newSingleThreadExecutor()
 
     enum class Status {
-        Starting, Ready, Stopped
+        Starting, Ready, Stopped, NewIdentity
     }
 
     var status: Status = Status.Stopped
@@ -164,6 +164,7 @@ object TorRunner {
                     return false
                 }
 
+                status = Status.NewIdentity
                 TorMod.logger.info("Successfully requested new Tor identity")
                 true
             }
