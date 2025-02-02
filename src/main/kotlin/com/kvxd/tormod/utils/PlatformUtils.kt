@@ -8,6 +8,11 @@ object PlatformUtils {
         MACOS
     }
 
+    enum class Architecture {
+        X86_64,
+        I686
+    }
+
     val platform: Platform
         get() = OSUtils.os.family.let { osFamily ->
             when {
@@ -23,5 +28,16 @@ object PlatformUtils {
         }
 
     val platformString = platform.name.lowercase()
+
+    val architecture: Architecture
+        get() = System.getProperty("os.arch").uppercase().let { arch ->
+            when {
+                arch.contains("64") -> Architecture.X86_64
+                arch.contains("86") -> Architecture.I686
+                else -> throw UnsupportedOperationException("Unsupported architecture: $arch")
+            }
+        }
+
+    val architectureString = architecture.name.lowercase()
 
 }
