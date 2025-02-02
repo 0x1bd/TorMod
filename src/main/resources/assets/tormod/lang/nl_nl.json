@@ -12,5 +12,5 @@
   "text.tormod.port_in_use": "Port word al gebruikt",
   "text.tormod.port_in_use.description": "Port {0} is in gebruik. Afbreken of stoppen?",
   "text.tormod.terminate_process": "Process Afbreken",
-  "text.tormod.disable": "Schakel TorMod out"
+  "text.tormod.disable": "Schakel TorMod uit"
 }
