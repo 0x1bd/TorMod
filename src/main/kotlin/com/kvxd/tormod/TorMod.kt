@@ -1,5 +1,6 @@
 package com.kvxd.tormod
 
+import com.kvxd.tormod.utils.PlatformUtils
 import com.kvxd.tormod.utils.TorInstaller
 import com.kvxd.tormod.utils.TorRunner
 import me.shedaniel.autoconfig.AutoConfig
@@ -39,6 +40,8 @@ class TorMod : ClientModInitializer {
     }
 
     private fun initializeMod(client: MinecraftClient) {
+        logger.info("TorMod running on ${PlatformUtils.platform}")
+
         AutoConfig.register(
             TorModConfig::class.java, ::GsonConfigSerializer
         )

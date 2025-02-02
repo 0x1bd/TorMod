@@ -7,7 +7,7 @@ import oshi.software.os.OperatingSystem
 object OSUtils {
 
     private val systemInfo = SystemInfo()
-    private val os: OperatingSystem = systemInfo.operatingSystem
+    val os: OperatingSystem = systemInfo.operatingSystem
 
     /**
      * Returns true if a TCP connection is found listening on the specified port.
