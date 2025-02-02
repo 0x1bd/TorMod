@@ -12,6 +12,8 @@ class TorModConfig : ConfigData {
     @Tooltip
     var port = 9050
     @Tooltip
+    var controlPort = 9051
+    @Tooltip
     var torVersion = "14.0.4"
 
 }

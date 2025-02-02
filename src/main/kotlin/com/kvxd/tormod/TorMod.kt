@@ -8,8 +8,13 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gui.screen.option.OptionsScreen
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
+import net.minecraft.client.gui.screen.TitleScreen
+import java.util.concurrent.atomic.AtomicBoolean
 
 class TorMod : ClientModInitializer {
 
@@ -19,19 +24,26 @@ class TorMod : ClientModInitializer {
     }
 
     private lateinit var holder: ConfigHolder<TorModConfig>
+    private val initialized = AtomicBoolean(false)
 
     override fun onInitializeClient() {
-        ClientLifecycleEvents.CLIENT_STARTED.register(::onClientStarted)
+        ClientTickEvents.END_CLIENT_TICK.register(::onClientTick)
         ClientLifecycleEvents.CLIENT_STOPPING.register(::onClientStopping)
     }
 
-    private fun onClientStarted(client: MinecraftClient) {
+    private fun onClientTick(client: MinecraftClient) {
+        if (!initialized.get() && client.currentScreen is TitleScreen) {
+            initialized.set(true)
+            initializeMod(client)
+        }
+    }
+
+    private fun initializeMod(client: MinecraftClient) {
         AutoConfig.register(
             TorModConfig::class.java, ::GsonConfigSerializer
         )
 
         holder = AutoConfig.getConfigHolder(TorModConfig::class.java)
-
         config = holder.config
 
         if (!TorInstaller.isInstalled())
@@ -48,5 +60,4 @@ class TorMod : ClientModInitializer {
         TorRunner.stopTor()
         TorRunner.shutdown()
     }
-
 }

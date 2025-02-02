@@ -43,6 +43,7 @@ dependencies {
 
     include(modImplementation("io.netty:netty-handler-proxy:${property("netty_version")}")!!)
     include(modImplementation("io.netty:netty-codec-socks:${property("netty_version")}")!!)
+    include(implementation("com.github.oshi:oshi-core:${property("oshi_version")}")!!)
 
     modImplementation("com.terraformersmc:modmenu:${property("modmenu_version")}")
 

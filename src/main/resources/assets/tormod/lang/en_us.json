@@ -1,12 +1,16 @@
 {
   "text.autoconfig.tormod.option.enabled": "Enabled",
-  "text.autoconfig.tormod.option.enabled.@Tooltip": "Should all traffic be routed over the TOR network",
+  "text.autoconfig.tormod.option.enabled.@Tooltip": "Should all traffic be routed over the TOR network?",
   "text.autoconfig.tormod.option.port": "Tor Port",
-  "text.autoconfig.tormod.option.port.@Tooltip": "Which port the TOR program runs on",
+  "text.autoconfig.tormod.option.port.@Tooltip": "Which port the TOR program runs on.",
   "text.autoconfig.tormod.option.torVersion": "Tor Version",
-  "text.autoconfig.tormod.option.torVersion.@Tooltip": "What version of Tor should be used",
-
+  "text.autoconfig.tormod.option.torVersion.@Tooltip": "Which version of Tor should be used.",
   "text.autoconfig.tormod.title": "Tormod",
 
-  "text.tormod.title": "TorMod"
+  "text.tormod.title": "TorMod",
+  "text.tormod.refresh": "New Identity",
+  "text.tormod.port_in_use": "Port is already in use",
+  "text.tormod.port_in_use.description": "Port {0} in use. Terminate or stop?",
+  "text.tormod.terminate_process": "Terminate Process",
+  "text.tormod.disable": "Disable TorMod"
 }

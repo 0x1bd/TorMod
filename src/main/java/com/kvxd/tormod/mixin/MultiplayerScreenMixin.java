@@ -40,11 +40,24 @@ public class MultiplayerScreenMixin extends Screen {
         enabledButton.setMessage(Text.translatable("text.tormod.title").styled(style -> style.withColor(textColor)));
 
         addDrawableChild(enabledButton);
+
+        ButtonWidget refreshButton = ButtonWidget.builder(Text.translatable("text.tormod.refresh"), btn -> {
+                    TorRunner.INSTANCE.requestNewExitNode();
+                })
+                .position(5 + 60 + 5, 5)
+                .width(80)
+                .build();
+
+        addDrawableChild(refreshButton);
     }
 
     @Inject(method = "render", at = @At("TAIL"))
     private void render(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
-        context.drawText(client.textRenderer, "Status: " + TorRunner.INSTANCE.getStatus(), 5 + 60 + 5, 5, -1, true);
+        String statusText = "Status: " + TorRunner.INSTANCE.getStatus();
+        int textWidth = client.textRenderer.getWidth(statusText);
+        int margin = 5;
+        int x = this.width - textWidth - margin;
+        context.drawText(client.textRenderer, statusText, x, margin, -1, true);
     }
 
 }
