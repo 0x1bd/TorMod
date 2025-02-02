@@ -3,6 +3,8 @@
   "text.autoconfig.tormod.option.enabled.@Tooltip": "Soll der gesamte Datenverkehr über das Tor-Netzwerk geleitet werden?",
   "text.autoconfig.tormod.option.port": "Tor-Port",
   "text.autoconfig.tormod.option.port.@Tooltip": "Welcher Port soll für das Tor-Programm verwendet werden?",
+  "text.autoconfig.tormod.option.controlPort": "Tor Steuerungs-Port",
+  "text.autoconfig.tormod.option.controlPort.@Tooltip": "Welcher Port soll für das Steuern vom Tor-Programm verwendet werden? (Wird zum Identitiäts-wechsel verwendet)",
   "text.autoconfig.tormod.option.torVersion": "Tor-Version",
   "text.autoconfig.tormod.option.torVersion.@Tooltip": "Welche Version von Tor soll verwendet werden?",
   "text.autoconfig.tormod.title": "Tormod",
