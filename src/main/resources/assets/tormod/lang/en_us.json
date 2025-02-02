@@ -12,7 +12,8 @@
   "text.tormod.title": "TorMod",
   "text.tormod.refresh": "New Identity",
   "text.tormod.port_in_use": "Port is already in use",
-  "text.tormod.port_in_use.description": "Port {0} in use. Terminate or stop?",
+  "text.tormod.port_in_use.description": "Port {0} in use. Terminate, disable or use system daemon?",
   "text.tormod.terminate_process": "Terminate Process",
-  "text.tormod.disable": "Disable TorMod"
+  "text.tormod.disable": "Disable TorMod",
+  "text.tormod.use_system_daemon": "Use System Daemon"
 }

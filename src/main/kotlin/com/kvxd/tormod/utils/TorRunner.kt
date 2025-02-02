@@ -18,7 +18,7 @@ object TorRunner {
     private val executor = Executors.newSingleThreadExecutor()
 
     enum class Status {
-        Starting, Ready, Stopped, NewIdentity, Error
+        Starting, Ready, Stopped, NewIdentity, RateLimited, Error
     }
 
     var status: Status = Status.Stopped
@@ -31,14 +31,18 @@ object TorRunner {
         var shouldProceed = true
 
         if (OSUtils.isPortInUse(TorMod.config.port)) {
-            MinecraftClient.getInstance().execute {
-                TorMod.logger.warn("A process is listening on port ${TorMod.config.port}!")
-                MinecraftClient.getInstance().setScreen(MinecraftClient.getInstance().currentScreen?.let {
-                    PortPromptScreen(
-                        it
-                    )
-                })
+            if (TorMod.useSystem) {
                 shouldProceed = false
+            } else {
+                MinecraftClient.getInstance().execute {
+                    TorMod.logger.warn("A process is listening on port ${TorMod.config.port}!")
+                    MinecraftClient.getInstance().setScreen(MinecraftClient.getInstance().currentScreen?.let {
+                        PortPromptScreen(
+                            it
+                        )
+                    })
+                    shouldProceed = false
+                }
             }
         }
 
@@ -125,6 +129,16 @@ object TorRunner {
                             status = Status.Stopped
                             TorMod.logger.info("Tor has stopped cleanly")
                         }
+
+                        line.contains("New control connection opened") -> {
+                            status = Status.NewIdentity
+                            TorMod.logger.info("Successfully requested new Tor identity")
+                        }
+
+                        line.contains("Rate limiting NEWNYM request") -> {
+                            status = Status.RateLimited
+                            TorMod.logger.warn("New identity request is being rate limited.")
+                        }
                     }
                 }
             }
@@ -169,9 +183,6 @@ object TorRunner {
                     status = Status.Error
                     return false
                 }
-
-                status = Status.NewIdentity
-                TorMod.logger.info("Successfully requested new Tor identity")
                 true
             }
         } catch (e: Exception) {

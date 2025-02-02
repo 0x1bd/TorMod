@@ -48,7 +48,8 @@ public class MultiplayerScreenMixin extends Screen {
                 .width(80)
                 .build();
 
-        addDrawableChild(refreshButton);
+        if (!TorMod.Companion.getUseSystem())
+            addDrawableChild(refreshButton);
     }
 
     @Inject(method = "render", at = @At("TAIL"))
@@ -57,7 +58,8 @@ public class MultiplayerScreenMixin extends Screen {
         int textWidth = client.textRenderer.getWidth(statusText);
         int margin = 5;
         int x = this.width - textWidth - margin;
-        context.drawText(client.textRenderer, statusText, x, margin, -1, true);
+        if (!TorMod.Companion.getUseSystem())
+            context.drawText(client.textRenderer, statusText, x, margin, -1, true);
     }
 
 }

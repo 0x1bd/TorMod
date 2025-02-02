@@ -9,7 +9,6 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents
 import net.minecraft.client.MinecraftClient
-import net.minecraft.client.gui.screen.option.OptionsScreen
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -22,6 +21,8 @@ class TorMod : ClientModInitializer {
     companion object {
         val logger: Logger = LoggerFactory.getLogger("TorMod")
         lateinit var config: TorModConfig
+
+        var useSystem: Boolean = false
     }
 
     private lateinit var holder: ConfigHolder<TorModConfig>

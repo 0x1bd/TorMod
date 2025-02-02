@@ -16,17 +16,27 @@ class PortPromptScreen(private val parent: Screen) : Screen(Text.translatable("t
         val buttonWidth = 120
         val spacing = 10
 
+        val totalWidth = buttonWidth * 3 + spacing * 2
+
+        val startX = centerX - totalWidth / 2
+
         addDrawableChild(ButtonWidget.builder(Text.translatable("text.tormod.terminate_process")) { _ ->
             OSUtils.terminateProcessOnPort(TorMod.config.port)
             TorRunner.startTor()
             client!!.setScreen(parent)
-        }.position(centerX - buttonWidth - spacing / 2, centerY).width(buttonWidth).build())
+        }.position(startX, centerY).width(buttonWidth).build())
 
         addDrawableChild(ButtonWidget.builder(Text.translatable("text.tormod.disable")) { _ ->
             TorMod.config.enabled = false
             TorRunner.status = TorRunner.Status.Stopped
             client!!.setScreen(parent)
-        }.position(centerX + spacing / 2, centerY).width(buttonWidth).build())
+        }.position(startX + buttonWidth + spacing, centerY).width(buttonWidth).build())
+
+        addDrawableChild(ButtonWidget.builder(Text.translatable("text.tormod.use_system_daemon")) { _ ->
+            TorMod.useSystem = true
+            TorRunner.status = TorRunner.Status.Stopped
+            client!!.setScreen(parent)
+        }.position(startX + (buttonWidth + spacing) * 2, centerY).width(buttonWidth).build())
     }
 
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
