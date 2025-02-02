@@ -37,8 +37,9 @@ TorMod comes with a few configurable options. You can modify these settings in t
 
 ```json
 {
-  "enabled": true,       // Is the mod enabled.
-  "port": 9050,          // The port tor and the internal proxy will be configured to run on. 
-  "torVersion": "14.0.4" // What version of tor to use.
+  "enabled": true,        // Is the mod enabled.
+  "port": 9050,           // The port tor is configured to run on.
+  "controlPort": 9051,    // The port that is used to control tor.
+  "torVersion": "14.0.4"  // What version of tor to use.
 }
 ```
