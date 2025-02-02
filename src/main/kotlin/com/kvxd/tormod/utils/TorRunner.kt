@@ -18,7 +18,7 @@ object TorRunner {
     private val executor = Executors.newSingleThreadExecutor()
 
     enum class Status {
-        Starting, Ready, Stopped, NewIdentity
+        Starting, Ready, Stopped, NewIdentity, Error
     }
 
     var status: Status = Status.Stopped
@@ -49,10 +49,10 @@ object TorRunner {
             startTorProcess(executable)
         } catch (e: IOException) {
             TorMod.logger.error("Failed to start Tor", e)
-            status = Status.Stopped
+            status = Status.Error
         } catch (e: InterruptedException) {
             TorMod.logger.error("Tor process was interrupted", e)
-            status = Status.Stopped
+            status = Status.Error
         }
     }
 
@@ -64,6 +64,7 @@ object TorRunner {
                 TorMod.logger.info("Tor process stopped")
             } catch (e: InterruptedException) {
                 TorMod.logger.error("Failed to stop Tor process", e)
+                status = Status.Error
             } finally {
                 torProcess = null
             }
@@ -130,16 +131,20 @@ object TorRunner {
         } catch (e: IOException) {
             if (e.message == "Stream closed") {
                 TorMod.logger.warn("Tor process output stream was closed unexpectedly")
+                status = Status.Error
             } else {
                 TorMod.logger.error("Error reading Tor process output", e)
+                status = Status.Error
             }
         } catch (e: Exception) {
             TorMod.logger.error("Unexpected error reading Tor process output", e)
+            status = Status.Error
         } finally {
             try {
                 reader.close()
             } catch (e: IOException) {
                 TorMod.logger.error("Error closing Tor process output stream", e)
+                status = Status.Error
             }
         }
     }
@@ -161,6 +166,7 @@ object TorRunner {
                 val signalResponse = reader.readLine()
                 if (!signalResponse.contains("250")) {
                     TorMod.logger.error("Failed to request new Tor identity: $signalResponse")
+                    status = Status.Error
                     return false
                 }
 
@@ -169,6 +175,7 @@ object TorRunner {
                 true
             }
         } catch (e: Exception) {
+            status = Status.Error
             false
         }
     }
