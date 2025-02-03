@@ -3,6 +3,8 @@
   "text.autoconfig.tormod.option.enabled.@Tooltip": "Wil jij alle verkeer door Tor Verzenden",
   "text.autoconfig.tormod.option.port": "Tor Port",
   "text.autoconfig.tormod.option.port.@Tooltip": "Welke port sal Tor gebruiken",
+  "text.autoconfig.tormod.option.controlPort": "Tor Stuurings-Port",
+  "text.autoconfig.tormod.option.controlPort.@Tooltip": "Welke Port Wil je gebruiken voor het stuuren van het tor-programma? (Word gebruit voor de Identiteits-wissel)",
   "text.autoconfig.tormod.option.torVersion": "Tor versie",
   "text.autoconfig.tormod.option.torVersion.@Tooltip": "Welke versie van tor wil je gebruiken",
   "text.autoconfig.tormod.title": "Tormod",
@@ -12,5 +14,6 @@
   "text.tormod.port_in_use": "Port word al gebruikt",
   "text.tormod.port_in_use.description": "Port {0} is in gebruik. Afbreken of stoppen?",
   "text.tormod.terminate_process": "Process Afbreken",
-  "text.tormod.disable": "Schakel TorMod uit"
+  "text.tormod.disable": "Schakel TorMod uit",
+  "text.tormod.use_system_daemon": "Gebruik System-Daemon"
 }
