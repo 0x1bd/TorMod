@@ -1,6 +1,6 @@
 {
   "text.autoconfig.tormod.option.enabled": "Aan",
-  "text.autoconfig.tormod.option.enabled.@Tooltip": "Wil jij alle verkeer door Tor Verzenden",
+  "text.autoconfig.tormod.option.enabled.@Tooltip": "Wil jij de verkeer door Tor Verzenden",
   "text.autoconfig.tormod.option.port": "Tor Port",
   "text.autoconfig.tormod.option.port.@Tooltip": "Welke port sal Tor gebruiken",
   "text.autoconfig.tormod.option.controlPort": "Tor Stuurings-Port",
